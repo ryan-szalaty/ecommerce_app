@@ -48,6 +48,9 @@ gem 'money-rails', '~> 1.15'
 #Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+#HTTP and connecting to APIs
+gem 'httparty', '~> 0.20.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
