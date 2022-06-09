@@ -1,0 +1,15 @@
+<h1>Sign Up</h1>
+
+<%=form_with model: @user do |form|%>
+    <%=form.label :username, "Username:"%>
+    <%=form.text_field :username%>
+    <%=form.label :email, "Email:"%>
+    <%=form.text_field :email%>
+    <%=form.label :password, "Password:"%>
+    <%=form.text_field :password%>
+    <%=form.submit%>
+
+    <%@user.errors.full_messages.each do |message|%>
+        <%=message%>
+    <%end%>
+<%end%>

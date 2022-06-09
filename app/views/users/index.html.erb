@@ -1,6 +1,6 @@
 <h1>Hello from hell!</h1>
 
-<p>Here is where the products are:</h1>
+<%=link_to "Sign Up", new_user_path%>
 
 <%JSON.parse(HTTParty.get('https://fakestoreapi.com/products').body).each do |product|%>
     <div>
