@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
     def index
-        
+        if session[:user_id]
+            @user = User.find(session[:user_id])
+        end
     end
     def show
         @user = User.find(params[:id])
@@ -12,6 +14,8 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             redirect_to root_path
+            session[:user_id] = @user.id
+            redirect_to root_path, notice: "Successfully registered!"
         else
             render :new, status: :unprocessable_entity
         end
