@@ -1,0 +1,15 @@
+<h1>Welcome, <%=@user[:username]%></h1>
+
+<p>Member since: <%=@user[:created_at]%></p>
+
+<p>Your Cart:</p>
+
+<div>
+
+    <h2>Stuff will go here.</h2>
+
+</div>
+
+<%=link_to "Edit Profile |", edit_user_path%>
+<%=link_to "Delete Profile |", user_path(@user), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure?' }%>
+<%=link_to "Back to Home", root_path%>
