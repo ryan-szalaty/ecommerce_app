@@ -8,18 +8,4 @@
     <%=link_to "Sign Up", new_user_path%>
 <%end%>
 
-<%JSON.parse(HTTParty.get('https://fakestoreapi.com/products').body).each do |product|%>
-    <div>
-    <br>
-        <p>Name: <%=product["title"]%></p>
-        <p>Price(USD): <%=product["price"]%></p>
-        <p>Description: <%=product["description"]%></p>
-        <p>Category: <%=product["category"]%></p>
-        <img src=<%=product["image"]%>>
-        <p>Rating: <%=product["rating"]["rate"]%></p>
-        <%=link_to "See More", store_path + "/" + product["id"]%>
-    <br>
-    </div>
-<%end%>
-
 
