@@ -5,11 +5,9 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_by(email: params[:email])
         if @user && @user[:password] == params[:password]
-            puts "YAY"
             session[:user_id] = @user[:id]
             redirect_to root_path, notice: "Logged in!"
         else
-            puts "FUCK"
             flash[:alert] = "Invalid email or password"
             render :new
         end

@@ -7,21 +7,13 @@
   <%=link_to "Login |", login_path%>
   <%=link_to "Sign Up", new_user_path%>
 <%end%>
-<%JSON.parse(HTTParty.get("https://fakestoreapi.com/products/#{@id}").body).each do |key, value|%>
-  <div>
-    <%if key == "image"%>
-        <img src=<%=value%>>
-    <%end%>
-    <%unless key == "image" || key == "id"%>
-        <%if key == "rating"%>
-            <p>Rating: <%=value["rate"]%>
-        <%elsif key == "description"%>
-            <p>Description: <%=value.capitalize%></p>
-        <%else%>
-            <p><%=key.capitalize%>, <%=value%></p>
-        <%end%>
-    <%end%>
-  </div>
-<%end%>
+
+<div>
+
+<p><%=@product["title"]%></p>
+<p>Price: <%=@product["price"]%></p>
+<img src=<%=@product["image"]%>>
+
+</div>
 
 <%=link_to "Back to Store", store_index_path%>
