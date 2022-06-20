@@ -7,9 +7,12 @@ class SessionsController < ApplicationController
         if @user && @user[:password] == params[:password]
             session[:user_id] = @user[:id]
             redirect_to root_path, notice: "Logged in!"
+        elsif !@user
+            flash[:alert] = "User does not exist. Please try again or register first."
+            redirect_to login_path, allow_other_host: true
         else
-            flash[:alert] = "Invalid email or password"
-            render :new
+            flash[:alert] = "Invalid email or password."
+            redirect_to login_path, allow_other_host: true
         end
     end
     def destroy
