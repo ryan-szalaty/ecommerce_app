@@ -1,20 +1,23 @@
 <%if Current.user%>
-    <h1>Welcome, <%=Current.user.username%></h1>
-    <%=link_to "Show Profile", user_path(Current.user)%>
-    <%=link_to "Sign Out", login_path, method: :delete%>
+  <h1>Welcome, <%=Current.user.username%></h1>
+  <%=link_to "Show Profile", user_path(Current.user)%>
+  <%=link_to "Sign Out", login_path, method: :delete%>
 <%else%>
-    <h1>Welcome, Guest</h1>
-    <%=link_to "Login |", login_path%>
-    <%=link_to "Sign Up", new_user_path%>
+  <h1>Welcome, Guest</h1>
+  <%=link_to "Login |", login_path%>
+  <%=link_to "Sign Up", new_user_path%>
 <%end%>
-
-<%@data.each do |product|%>
-<div>
-    <br>
-    <p>Name: <%=product["title"]%></p>
-    <p>Price(USD): <%=product["price"]%></p>
-    <img src=<%=product["image"]%>>
-    <%=link_to "See Product", store_path(id: product["id"])%>
-    <br>
-</div>
+<%if @data == "ERROR"%>
+  <p>Whoops! Looks like something went wrong on the store's end. Try refreshing the page.</p>
+<%else%>
+  <%@data.each do |product|%>
+    <div>
+      <br>
+      <p>Name: <%=product["title"]%></p>
+      <p>Price(USD): <%=product["price"]%></p>
+      <img src=<%=product["image"]%>>
+      <%=link_to "See Product", store_path(id: product["id"])%>
+      <br>
+    </div>
+  <%end%>
 <%end%>
