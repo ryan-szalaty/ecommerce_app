@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
         @item = @user.items.create(items_params)
         if @item.save
             flash[:success] = "Successfully added to cart."
-            redirect_to users_path(@user)
+            redirect_to user_path(@user)
         else
             flash[:alert] = "Something went wrong. Please try again."
             redirect_to store_path(params[:id])

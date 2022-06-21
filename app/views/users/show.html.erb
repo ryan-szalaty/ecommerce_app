@@ -12,6 +12,7 @@
       <%=link_to "Remove from Cart", [@user, item], data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure?' }%>
     </div>
   <%end%>
+  <h3>Total Price: <%=Current.user.items.reduce(0) {|sum, item| sum + item["price"].to_d}%></h3>
 <%end%>
 <%=link_to "Edit Profile |", edit_user_path%>
 <%=link_to "Delete Profile |", user_path(Current.user), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure?' }%>
