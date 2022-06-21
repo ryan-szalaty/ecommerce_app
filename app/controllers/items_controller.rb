@@ -6,9 +6,21 @@ class ItemsController < ApplicationController
             flash[:success] = "Successfully added to cart."
             redirect_to users_path(@user)
         else
+            flash[:alert] = "Something went wrong. Please try again."
+            redirect_to store_path(params[:id])
+        end
     end
 
-    def items_params
-        params.require(:item).permit(:id, :title, :price, :image)
+    def destroy
+        @user = User.find(params[:user_id])
+        @item = Item.find(params[:id])
+
+        @item.destroy
+
+        redirect_to user_path(@user), status: :see_other
+    end
+
+    private def items_params
+        params.permit(:id, :user_id, :title, :price, :image)
     end
 end
