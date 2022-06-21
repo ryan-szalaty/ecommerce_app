@@ -14,6 +14,8 @@
 <p>Price: <%=@product["price"]%></p>
 <img src=<%=@product["image"]%>>
 
+<%=button_to "Add to Cart", user_items_path(user_id: Current.user.id, id: @product["id"], title: @product["title"], price: @product["price"], image: @product["image"])%>
+
 </div>
 
 <%=link_to "Back to Store", store_index_path%>
