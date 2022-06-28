@@ -10,14 +10,18 @@
 <%if @data == "ERROR"%>
   <p>Whoops! Looks like something went wrong on the store's end. Try refreshing the page.</p>
 <%else%>
-  <%@data.each do |product|%>
-    <div>
-      <br>
-      <p>Name: <%=product["title"]%></p>
-      <p>Price(USD): <%=product["price"]%></p>
-      <img src=<%=product["image"]%>>
-      <%=link_to "See Product", store_path(id: product["id"])%>
-      <br>
-    </div>
-  <%end%>
+  <div class="container d-flex flex-wrap">
+    <%@data.each do |product|%>
+      <div class="col col-12 col-sm-6 col-xl-4 my-2">
+        <div class="card my-3 w-100 h-100 d-flex align-items-center justify-content-center">
+          <img src=<%=product["image"]%> class="card-img-top my-3 w-50 h-50" alt="Product image">
+          <div class="card-body text-left w-100">
+            <h5 class="card-title"><%=product["title"]%></h5>
+            <p class="card-text">Price(USD): <%=product["price"].to_d.round.to_s + ".99"%></p>
+            <%=link_to "See Product", store_path(id: product["id"])%>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
 <%end%>
