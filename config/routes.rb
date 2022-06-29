@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "product/:id", to: "store#show"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
+  get "login/delete", to: "sessions#destroy"
 end

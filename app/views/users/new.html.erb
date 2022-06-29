@@ -1,12 +1,12 @@
-<h1>Sign Up</h1>
+<h1 class="text-center">Sign Up</h1>
 
 <%=form_with model: @user do |form|%>
     <%=form.label :username, "Username:"%>
-    <%=form.text_field :username%>
+    <%=form.text_field :username, class: "form-control"%>
     <%=form.label :email, "Email:"%>
-    <%=form.text_field :email%>
+    <%=form.text_field :email, class: "form-control"%>
     <%=form.label :password, "Password:"%>
-    <%=form.text_field :password%>
+    <%=form.text_field :password, class: "form-control"%>
     <%=form.submit%>
 
     <%@user.errors.full_messages.each do |message|%>

@@ -1,24 +1,27 @@
-<%if Current.user%>
-  <h1>Welcome, <%=Current.user.username%></h1>
-  <%=link_to "Show Profile", user_path(Current.user)%>
-  <%=link_to "Sign Out", login_path, method: :delete%>
-<%else%>
-  <h1>Welcome, Guest</h1>
-  <%=link_to "Login |", login_path%>
-  <%=link_to "Sign Up", new_user_path%>
-<%end%>
-<div class="col col-12 my-2">
-  <div class="card my-3 w-100 h-100 d-flex align-items-center justify-content-center">
-    <img src=<%=@product["image"]%> class="card-img-top my-3 w-50 h-50" alt="Product image">
-    <div class="card-body text-left w-100">
-      <h5 class="card-title"><%=@product["title"]%></h5>
-      <p class="card-text">Price(USD): <%=@product["price"].to_d.round.to_s + ".99"%></p>
-      <%if Current.user.items.any? {|product| product["id"] == @product["id"]}%>
-        <p>Item already in cart!</p>
-      <%else%>
-        <%=button_to "Add to Cart", user_items_path(user_id: Current.user.id, id: @product["id"], title: @product["title"], price: @product["price"], image: @product["image"])%>
-      <%end%>
+<div class="container mt-3">
+  <%if Current.user%>
+    <h1>Welcome, <%=Current.user.username%></h1>
+    <%=link_to "Show Profile", user_path(Current.user)%>
+  <%else%>
+    <h1>Welcome, Guest</h1>
+    <%=link_to "Login |", login_path%>
+    <%=link_to "Sign Up", new_user_path, class: "mx-3"%>
+  <%end%>
+  <div class="col col-12 my-2 shadow-sm">
+    <div class="card my-3 w-100 h-100 d-flex align-items-center justify-content-center">
+      <img src=<%=@product["image"]%> class="card-img-top my-3 w-50 h-50" alt="Product image">
+      <div class="card-body text-left w-100">
+        <h5 class="card-title"><%=@product["title"]%></h5>
+        <p class="card-text">Price(USD): <%=@product["price"].to_d.round.to_s + ".99"%></p>
+        <%if Current.user && Current.user.items.any? {|product| product["id"] == @product["id"]}%>
+          <p class="text-danger">Item already in cart!</p>
+        <%elsif !Current.user%>
+          <p class="text-info">Please sign in to add item to your cart.</p>
+        <%else%>
+          <%=button_to "Add to Cart", user_items_path(user_id: Current.user.id, id: @product["id"], title: @product["title"], price: @product["price"], image: @product["image"]), class: "btn btn-outline-primary"%>
+        <%end%>
+      </div>
     </div>
   </div>
+  <%=link_to "Back to Store", store_index_path%>
 </div>
-<%=link_to "Back to Store", store_index_path%>
