@@ -3,7 +3,9 @@
   <p class="mt-3">Your Cart:</p>
 </div>
 <%if Current.user.items.empty?%>
-  <p>Nothing in cart. Let's do some shopping!</p>
+  <div class="container">
+    <p>Nothing in cart. Let's do some shopping!</p>
+  </div>
 <%else%>
   <div class="container d-flex flex-wrap">
     <%Current.user.items.each do |item|%>
