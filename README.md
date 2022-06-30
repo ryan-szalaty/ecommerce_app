@@ -14,7 +14,7 @@ Using Rails to build a complex app was a challenge. Rails's convention over conf
 
 # Current issues:
 
-Unfortunately, late into development, I discovered a bug where an item could not be added to the shopoing cart if another user had already done so. I will come back to this in the future.
+Unfortunately, late into development, I discovered a bug where an item could not be added to the shopping cart if another user had already done so. I will come back to this in the future.
 
 あいにくですが、ディベロップメントの最後のステージに至った時に新しい問題を発見しました。その問題は、もしとあるユーザーが商品の一つをカートに入れ、そして他のユーザーが同じ商品を入れてみたら、重複IDの原因で許されなかったということです。数ヶ月後確認する予定です。
 
@@ -30,12 +30,8 @@ Node.js with Express would be better for something like an e-commerce website be
 
 e-commerceというウエブサイトの種類と考えると、機能に会うNode.jsとExpressの方が実現的だっと思います。そして、Stripeという納入システムを実現します。
 
-* Database initialization
+# When I got stuck, and how I got unstuck:
 
-* How to run the test suite
+Several times, I got stuck with new issues. Handling promises from an API call, implementing the shopping cart feature, and using sessions were particularly challenging aspects. I was able to solve all of these problems by researching on Google and Stack Overflow for possible answers.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+数回も困ってきたところに至っていた。例えば、APIからのプロミスを使うこと、カートという機能を実現すること、セッションを使うことなどが時間がかかったプログラムの側面です。グーグルやStack Overflowのおかげで全ての問題を解くことができました。
